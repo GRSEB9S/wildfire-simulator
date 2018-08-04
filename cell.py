@@ -1,11 +1,11 @@
 class Cell:
     def __init__(self, status, size, elevation, windDirection, windSpeed, flammability):
-        self.status                      =  status         # unburned, burning, burned
-        self.size                        =  size           # side length of cell in meters
-        self.elevation                   =  elevation      # meters above sea level
-        self.windDirection               =  windDirection  # in radians
-        self.windSpeed                   =  windSpeed      # in mph
-        self.flammability                =  flammability   # scale of 0-10, 0 being nonflammable
+        self.status         =  status         # unburned, burning, burned
+        self.size           =  size           # side length of cell in meters
+        self.elevation      =  elevation      # meters above sea level
+        self.windDirection  =  windDirection  # in radians
+        self.windSpeed      =  windSpeed      # in mph
+        self.flammability   =  flammability   # scale of 0-10, 0 being nonflammable
         
         # More complex variables that may be added later
         #
@@ -35,10 +35,14 @@ class Cell:
     '''
 
     def printCell(self):
+        kBrightRed = '\x1b[38;5;9m'
+        kDarkRed = '\x1b[38;5;52m'
+        kColorEnd = '\x1b[0m'
+
         if self.status == 'unburned':
-            print 'O', 
+            print('O', end='')
         elif self.status == 'burning':
-            print '~',
+            print(kBrightRed + '~' + kColorEnd, end='')
         elif self.status == 'burned':
-            print 'X',
+            print(kDarkRed + 'X' + kColorEnd, end='')
 
